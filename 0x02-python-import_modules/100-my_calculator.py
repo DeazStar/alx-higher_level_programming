@@ -1,29 +1,22 @@
 #!/usr/bin/python3
 
-from xml.etree.ElementInclude import default_loader
+from ast import operator
 
 
 if __name__ == "__main__":
+
     from calculator_1 import add, sub, mul, div
     import sys
 
-    count = len(sys.argv)
-    a = int(sys.argv[1])
-    operator = sys.argv[2]
-    b = int(sys.argv[3])
-    print(operator)
-
-    if count != 4:
+    if len(sys.argv) - 1 != 3:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
         sys.exit(1)
-    if operator == "+":
-        print("{} + {} = {}".format(a, b, add(a, b)))
-    elif operator == "-":
-         print("{} - {} = {}".format(a, b, sub(a, b)))
-    elif operator == "*":
-        print("{} * {} = {}".format(a, b, mul(a, b)))
-    elif operator == "/":
-        print("{} + {} = {}".format(a, b, div(a, b)))
-    else:
+
+    operators = {"+": add, "-": sub, "*": mul, "/": div}
+    if sys.argv[2] not in list(operators.keys()):
         print("Unknown operator. Available operators: +, -, * and /")
         sys.exit(1)
+
+    a = int(sys.argv[1])
+    b = int(sys.argv[3])
+    print("{} {} {} = {}".format(a, sys.argv[2], b, operators[sys.argv[2]](a, b)))
