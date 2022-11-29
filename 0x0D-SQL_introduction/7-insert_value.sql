@@ -2,5 +2,5 @@
 -- New row:
 -- id = 89
 -- name = Best School
-INSERT INTO hbtn_0c_0(id, name) VALUES(89, "Best School");
+INSERT INTO hbtn_0c_0 VALUES(89, "Best School");
 
